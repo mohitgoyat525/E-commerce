@@ -1,0 +1,89 @@
+"use client";
+import React, { useRef } from "react";
+import CustomHeading from "./common/CustomHeading";
+import { HAPPY_CUSTOMERS_LIST } from "@/utils/helper";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation"; // Import Swiper Navigation styles
+import { Autoplay, Navigation } from "swiper/modules";
+
+const HappyCustomer = () => {
+  const swiperRef = useRef<any>(null); // Swiper instance ref
+
+  return (
+    <>
+      <div className="max-w-[1240px] mx-auto pt-[80px]">
+        <CustomHeading
+          myClass="!text-start"
+          headingText="OUR HAPPY CUSTOMERS"
+        />
+      </div>
+
+      <div className="w-full px-4 mx-auto mt-10">
+        {/* Navigation Buttons */}
+        <div className="flex justify-end gap-4 mb-4">
+          <button
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="px-4 py-2 bg-gray-200 rounded-md"
+          >
+            Prev
+          </button>
+          <button
+            onClick={() => swiperRef.current?.slideNext()}
+            className="px-4 py-2 bg-gray-200 rounded-md"
+          >
+            Next
+          </button>
+        </div>
+
+        <Swiper
+          spaceBetween={20}
+                  slidesPerView={3}
+                  loop={true}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          modules={[Autoplay, Navigation]}
+          className="py-6"
+        >
+          {HAPPY_CUSTOMERS_LIST.map((customer, index) => (
+            <SwiperSlide key={index} className="flex justify-center">
+              <div className="bg-white border border-solid border-[#0000001A] w-full max-w-[400px] h-[240px] rounded-[20px] px-8 pt-[28px]">
+                <div className="flex items-center gap-2 mb-4">
+                  <Image
+                    src={customer.rating}
+                    alt="Rating"
+                    width={100}
+                    height={20}
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <p className="font-bold font-santoshi-bold text-xl">
+                    {customer.name}
+                  </p>
+                  <Image
+                    src={customer.icon}
+                    alt="Verified"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+                <p className="text-base font-normal text-[#00000099]">
+                  “{customer.description}”
+                </p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </>
+  );
+};
+
+export default HappyCustomer;
