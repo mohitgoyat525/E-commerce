@@ -1,3 +1,6 @@
+import { link } from "fs";
+import { FacebookIcon, GithubIcon, InstagramIcon, TwitterIcon } from "./Icons";
+
 export const HEADER_LIST: { name: string; link?: string }[] = [
   {
     name: "Shop ",
@@ -17,9 +20,12 @@ export const HEADER_LIST: { name: string; link?: string }[] = [
 ];
 
 export const BRANDS_LIST = [
-  "/assets/images/webp/versace-logo.webp","/assets/images/webp/zara-logo.webp","/assets/images/webp/gucchi-logo.webp","/assets/images/webp/prada-logo.webp","/assets/images/webp/calvin-klein-logo.webp"
-]
-
+  "/assets/images/webp/versace-logo.webp",
+  "/assets/images/webp/zara-logo.webp",
+  "/assets/images/webp/gucchi-logo.webp",
+  "/assets/images/webp/prada-logo.webp",
+  "/assets/images/webp/calvin-klein-logo.webp",
+];
 export const NEW_ARRIVALS_LIST = [
   {
     image: "/assets/images/webp/t-shirt-img-one.webp",
@@ -50,6 +56,7 @@ export const NEW_ARRIVALS_LIST = [
     discount: "-30%",
   },
 ];
+
 export const TOP_SELLING_LIST = [
   {
     image: "/assets/images/webp/verticale-shirt-img.webp",
@@ -122,5 +129,54 @@ export const HAPPY_CUSTOMERS_LIST = [
     description:
       "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”",
   },
+];
 
+export const SOCIAL_LIST = [
+  {
+    icon: <TwitterIcon />,
+    link: "https://x.com/?lang=en",
+  },
+  {
+    icon: <FacebookIcon/>,
+    link: "https://facebook.com",
+  },
+  {
+    icon: <InstagramIcon/>,
+    link: "https://instagram.com",
+  },
+  {
+    icon: <GithubIcon/>,
+    link: "https://github.com",
+  },
+];
+
+export const FOOTER_LIST = [
+  {
+    title: "Company",
+    name: "About",
+    nameTwo: "Features",
+    nameThree: "Works",
+    nameFour: "Career",
+  },
+  {
+    title: "Help",
+    name: "Customer Support",
+    nameTwo: "Delivery Details",
+    nameThree: "Terms & Conditions",
+    nameFour: "Privacy Policy",
+  },
+  {
+    title: "FAQ",
+    name: "Account",
+    nameTwo: "Manage Deliveries",
+    nameThree: "Orders",
+    nameFour: "Payments",
+  },
+  {
+    title: "Resources",
+    name: "Free eBooks",
+    nameTwo: "Development Tutorial",
+    nameThree: "How to - Blog",
+    nameFour: "Youtube Playlist",
+  },
 ];

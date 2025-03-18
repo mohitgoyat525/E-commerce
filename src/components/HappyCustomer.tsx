@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation"; // Import Swiper Navigation styles
 import { Autoplay, Navigation } from "swiper/modules";
+import { NextArrowIcon, PrevArrowIcon } from "@/utils/Icons";
 
 const HappyCustomer = () => {
   const swiperRef = useRef<any>(null); // Swiper instance ref
@@ -25,22 +26,22 @@ const HappyCustomer = () => {
         <div className="flex justify-end gap-4 mb-4">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="px-4 py-2 bg-gray-200 rounded-md"
+            className="cursor-pointer"
           >
-            Prev
+            <PrevArrowIcon />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="px-4 py-2 bg-gray-200 rounded-md"
+            className="cursor-pointer"
           >
-            Next
+            <NextArrowIcon />
           </button>
         </div>
 
         <Swiper
           spaceBetween={20}
-                  slidesPerView={3}
-                  loop={true}
+          slidesPerView={3}
+          loop={true}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           breakpoints={{
             320: { slidesPerView: 1 },
