@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Header from "../common/Header";
 import { CheckIcon, NextMoveIcon } from "@/utils/Icons";
 import Image from "next/image";
-import { TOP_SELLING_LIST } from "@/utils/Helper";
+import { TOP_SELLING_LIST ,NEW_ARRIVALS_LIST  } from "@/utils/Helper";
 
 interface Product {
   tittle: string;
@@ -14,6 +14,7 @@ interface Product {
 }
 
 const ReviewHero: React.FC = () => {
+  const productList = [...TOP_SELLING_LIST, ...NEW_ARRIVALS_LIST];  
   const pathname = usePathname();
   const productSlug = pathname.split("/").pop(); // Extract last segment of URL
   const [product, setProduct] = useState<Product | null>(null);
@@ -24,7 +25,7 @@ const ReviewHero: React.FC = () => {
   useEffect(() => {
     if (productSlug) {
       const formattedSlug = productSlug.replace(/-/g, " ");
-      const foundProduct = TOP_SELLING_LIST.find(
+      const foundProduct = productList.find(
         (item) => item.tittle.toLowerCase() === formattedSlug.toLowerCase()
       );
       setProduct(foundProduct || null);
@@ -87,7 +88,6 @@ const ReviewHero: React.FC = () => {
           </div>
 
           <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-3"></div>
-
           {/* Size Selection */}
           <p>Select Size</p>
           <div className="flex gap-4">

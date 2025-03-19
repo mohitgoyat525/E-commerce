@@ -5,12 +5,13 @@ import Hero from "@/components/home/Hero";
 import NewArrivals from "@/components/home/NewArrivals";
 import TopSelling from "@/components/home/TopSelling";
 import Footer from "@/components/common/Footer";
-import { HAPPY_CUSTOMERS_LIST } from "@/utils/helper";
+
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <>
+    <Suspense>
       <Hero />
       <Brands />
       <NewArrivals />
@@ -18,6 +19,6 @@ export default function Home() {
       <BrowseStyle />
       <HappyCustomer />
       <Footer />
-    </>
+    </Suspense>
   );
 }

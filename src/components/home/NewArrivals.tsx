@@ -6,7 +6,7 @@ import CustomProduct from "../common/CustomProducts";
 const NewArrivals = () => {
   return (
     <CustomProduct
-      tittle="TOP SELLING"
+      tittle="NEW ARRIVALS"
       productList={NEW_ARRIVALS_LIST}
       showDiscount={(i) => i !== 0}
     />

@@ -7,9 +7,7 @@ import Image from 'next/image';
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <div
-      className="footer-bg px-4 mt-[80px]"
-    >
+    <div className="footer-bg px-4 mt-[80px]">
       <LastestOffer />
       <div className="max-w-[1240px] mx-auto  container">
         <div className="flex gap-[113.5px] max-lg:gap-0 py-[50px] max-sm:py-[31px] max-md:py-10 max-lg:py-12 max-lg:flex-col gap-y-10">
@@ -20,7 +18,7 @@ const Footer = () => {
             >
               <FooterLogo />
             </Link>
-            <p>
+            <p className="font-normal text-sm leading-[22px] text-[#00000099] max-w-[248px] mt-6">
               We have clothes that suits your style and which you’re proud to
               wear. From women to men.
             </p>
