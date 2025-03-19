@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Header from "../common/Header";
 import { CheckIcon, NextMoveIcon } from "@/utils/Icons";
 import Image from "next/image";
-import { TOP_SELLING_LIST } from "../../utils/Helper";
+import { TOP_SELLING_LIST } from "@/utils/Helper";
 
 interface Product {
   tittle: string;

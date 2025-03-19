@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import { TOP_SELLING_LIST } from "../../utils/Helper";
+import { TOP_SELLING_LIST } from "@/utils/Helper";
 import CustomProduct from "../common/CustomProducts";
 
 const TopSelling = () => {

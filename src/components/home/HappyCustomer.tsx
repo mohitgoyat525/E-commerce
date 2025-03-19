@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import CustomHeading from "../common/CustomHeading";
-import { HAPPY_CUSTOMERS_LIST } from "../../utils/Helper";
+import { HAPPY_CUSTOMERS_LIST } from "@/utils/Helper";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
