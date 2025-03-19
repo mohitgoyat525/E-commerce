@@ -4,7 +4,7 @@ import { EmailIcon, FooterLogo } from "@/utils/Icons";
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Link from "next/link";
-import { FOOTER_LIST, SOCIAL_LIST } from "@/utils/helper";
+import { FOOTER_LIST, SOCIAL_LIST } from "../../utils/Helper";
 
 const Footer = () => {
   const [formData, setFormData] = useState({ email: "" });

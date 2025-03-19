@@ -1,7 +1,6 @@
-import React from 'react'
-import Header from './common/Header'
-import Image from 'next/image';
-import { BRANDS_LIST } from '@/utils/helper';
+import React from "react";
+import Header from "../common/Header";
+import Image from "next/image";
 const Hero = () => {
   return (
     <>
@@ -89,6 +88,6 @@ const Hero = () => {
       </div>
     </>
   );
-}
+};
 
-export default Hero
+export default Hero;

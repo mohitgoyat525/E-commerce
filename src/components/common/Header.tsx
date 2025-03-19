@@ -3,7 +3,7 @@ import { CrossIcon, SearchIcon, ShopIcon } from '@/utils/Icons';
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
-import { HEADER_LIST } from '@/utils/helper';
+import { HEADER_LIST } from "../../utils/Helper";
 import { link } from 'fs';
 const Header = () => {
    const [isOpen, setIsOpen] = useState(false);

@@ -1,18 +1,34 @@
-"use client"
-import React from 'react'
-import CustomHeading from './common/CustomHeading';
+"use client";
+import React from "react";
+import CustomHeading from "../common/CustomHeading";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { TOP_SELLING_LIST } from "@/utils/helper";
 import Image from "next/image";
-const TopSelling = () => {
+import Link from "next/link";
+
+interface Product {
+  tittle: string;
+  image: string;
+  rating: string;
+  price: string;
+  cancelPrice?: string;
+  discount?: string;
+}
+
+interface ProductSliderProps {
+  tittle: string;
+  productList: Product[];
+  showDiscount?: (index: number) => boolean;
+}
+
+const CustomProduct: React.FC<ProductSliderProps> = ({
+  tittle,
+  productList,
+  showDiscount,
+}) => {
   return (
-    <>
-      <div className="w-full max-w-[1240px] mx-auto border border-solid border-[#0000001A]"></div>
-      <CustomHeading
-        myClass="uppercase mt-[64px] mb-[55px] max-lg:my-10 max-md:my-7"
-        headingText="top selling"
-      />
+    <div className="overflow-hidden">
+      <CustomHeading myClass="mt-5" headingText={tittle} />
       <div className="max-w-[1240px] mx-auto mt-[55px] max-sm:flex max-sm:items-center max-sm:justify-center">
         <Swiper
           spaceBetween={20}
@@ -24,9 +40,16 @@ const TopSelling = () => {
             1024: { slidesPerView: 4 },
           }}
         >
-          {TOP_SELLING_LIST.map((obj, i) => (
+          {productList.map((obj, i) => (
             <SwiperSlide key={i}>
-              <div className="w-full max-sm:max-w-[295px] mx-auto">
+              <Link
+                href={`/product/${
+                  obj?.tittle
+                    ? obj.tittle.toLowerCase().replace(/\s+/g, "-")
+                    : "default-title"
+                }`} 
+                className="w-full max-sm:max-w-[295px] mx-auto"
+              >
                 <Image
                   src={obj.image}
                   alt="clothes"
@@ -51,8 +74,7 @@ const TopSelling = () => {
                   <h5 className="line-through text-[#00000066] font-santoshi-bold text-2xl leading-[100%] font-bold">
                     {obj.cancelPrice}
                   </h5>
-                  {/* discount */}
-                  {i === 0 && (
+                  {showDiscount && showDiscount(i) && obj.discount && (
                     <div className="bg-[#FF33331A] flex items-center justify-center rounded-full px-[13.5px] py-1.5">
                       <p className="text-[#FF3333] font-medium text-xs leading-[100%] max-md:text-[10px]">
                         {obj.discount}
@@ -60,16 +82,16 @@ const TopSelling = () => {
                     </div>
                   )}
                 </div>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      <button className="font-medium text-base leading-[100%] border border-solid border-[#0000001A] flex items-center justify-center min-w-[218px] h-[52px] mx-auto  mt-[36px] mb-[64px] transition-all ease-linear duration-300 hover:bg-black hover:text-white rounded-full">
+      <button className="font-medium text-base leading-[100%] border border-solid border-[#0000001A] flex items-center justify-center min-w-[218px] h-[52px] mx-auto mt-[36px] mb-[64px] transition-all ease-linear duration-300 hover:bg-black hover:text-white rounded-full">
         View All
       </button>
-    </>
+    </div>
   );
-}
+};
 
-export default TopSelling
+export default CustomProduct;

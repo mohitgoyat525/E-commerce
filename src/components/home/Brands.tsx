@@ -1,4 +1,4 @@
-import { BRANDS_LIST } from '@/utils/helper';
+import { BRANDS_LIST } from "../../utils/Helper";
 import React from 'react'
 import Image from 'next/image';
 const Brands = () => {

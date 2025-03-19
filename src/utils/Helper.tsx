@@ -1,4 +1,4 @@
-import { link } from "fs";
+
 import { FacebookIcon, GithubIcon, InstagramIcon, TwitterIcon } from "./Icons";
 
 export const HEADER_LIST: { name: string; link?: string }[] = [
@@ -56,6 +56,8 @@ export const NEW_ARRIVALS_LIST = [
     discount: "-30%",
   },
 ];
+
+
 
 export const TOP_SELLING_LIST = [
   {
