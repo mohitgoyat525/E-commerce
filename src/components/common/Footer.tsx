@@ -1,157 +1,88 @@
-"use client";
-
-import { EmailIcon, FooterLogo } from "@/utils/Icons";
-import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import React from 'react'
 import Link from "next/link";
-import { FOOTER_LIST, SOCIAL_LIST } from "@/utils/Helper";
-
+import LastestOffer from '../home/LastestOffer';
+import { FooterLogo } from '@/utils/Icons';
+import { FOOTER_LIST, PAYMENTS_METHOD_LIST, SOCIAL_LIST } from '@/utils/Helper';
+import Image from 'next/image';
 const Footer = () => {
-  const [formData, setFormData] = useState({ email: "" });
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState({ type: "", text: "" });
-  const form = useRef<HTMLFormElement | null>(null);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setMessage({ type: "", text: "" });
-
-    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setMessage({
-        type: "error",
-        text: "Please enter a valid email address.",
-      });
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      const response = await emailjs.send(
-        "service_oq1cf7s",
-        "template_dkufmac",
-        { email: formData.email },
-        "e8pPFGTd0j6uM6UBA"
-      );
-
-      if (response.status === 200) {
-        setMessage({ type: "success", text: "Email sent successfully!" });
-        setFormData({ email: "" });
-      } else {
-        setMessage({
-          type: "error",
-          text: "Failed to send email. Please try again.",
-        });
-      }
-    } catch (error) {
-      console.error("Email sending error:", error);
-      setMessage({
-        type: "error",
-        text: "An error occurred. Please try again.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+  const year = new Date().getFullYear();
   return (
-    <>
-      <div className="bg-white relative">
-        <div className="bg-black py-8 px-[64px]  w-full max-w-[1240px] mx-auto rounded-4xl absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]">
-          <div className="flex items-center justify-between">
-            <h2 className="font-bold text-[40px] leading-[45px] max-w-[551px] text-white font-intergal-cf">
-              STAY UP TO DATE ABOUT OUR LATEST OFFERS
-            </h2>
-            <form
-              ref={form}
-              onSubmit={handleSubmit}
-              className="flex items-center flex-col"
+    <div
+      className="footer-bg px-4 mt-[80px]"
+    >
+      <LastestOffer />
+      <div className="max-w-[1240px] mx-auto  container">
+        <div className="flex gap-[113.5px] max-lg:gap-0 py-[50px] max-sm:py-[31px] max-md:py-10 max-lg:py-12 max-lg:flex-col gap-y-10">
+          <div className="max-w-[248px] max-lg:max-w-[unset] w-full">
+            <Link
+              href={"/"}
+              className="text-custom-3xl font-bold leading-[100%] max-lg:text-3xl max-md:text-[25.2px] font-integral-cf"
             >
-              <div className="flex items-center gap-4 bg-white w-full px-5 h-[48px] min-w-[349px] border border-solid border-white rounded-full">
-                <EmailIcon />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email address"
-                  className="outline-none w-full bg-transparent text-base leading-[100%] font-normal placeholder:font-normal text-black placeholder:text-[#00000066]"
-                />
-              </div>
-              <button
-                type="submit"
-                className="text-black bg-white w-full h-[48px] min-w-[349px] text-base font-normal rounded-full mt-6"
-                disabled={isLoading}
-              >
-                {isLoading ? "Sending..." : "Subscribe to Newsletter"}
-              </button>
-              {message.text && (
-                <p
-                  className={`mt-2 text-sm ${
-                    message.type === "error" ? "text-red-500" : "text-green-500"
-                  }`}
+              <FooterLogo />
+            </Link>
+            <p>
+              We have clothes that suits your style and which you’re proud to
+              wear. From women to men.
+            </p>
+            <div className="flex gap-3 pt-9 max-sm:pt-5 max-md:pt-6 max-lg:pt-7">
+              {SOCIAL_LIST.map((item, index) => (
+                <Link
+                  href={item.link}
+                  target="_blank"
+                  className="size-7 bg-white border border-solid border-black/20 flex hover:bg-black group transition-all duration-300 justify-center items-center rounded-full"
+                  key={index}
                 >
-                  {message.text}
-                </p>
-              )}
-            </form>
-          </div>
-        </div>
-        <footer className="bg-[#F0F0F0] px-4">
-          <div className="flex justify-between flex-wrap pt-[140px] max-w-[1240px] mx-auto">
-            <div className="flex flex-col">
-              <Link href="/">
-                <FooterLogo />
-              </Link>
-              <p className="pt-6 max-w-[248px] text-sm leading-[22px] font-normal text-[#00000099]">
-                We have clothes that suit your style and that you’re proud to
-                wear. From women to men.
-              </p>
-              <div className="flex items-center mt-[35px] gap-3">
-                {SOCIAL_LIST.map((obj, i) => (
-                  <Link
-                    key={i}
-                    target="_blank"
-                    href={obj.link}
-                    className="flex items-center justify-center bg-white rounded-full min-w-[28px] h-[28px]"
-                  >
-                    <p>{obj.icon}</p>
-                  </Link>
-                ))}
-              </div>
+                  {item.icon}
+                </Link>
+              ))}
             </div>
-            <div className="flex justify-between gap-[140px] flex-wrap max-xl:gap-24 max-lg:gap-14 max-md:gap-10">
-              {FOOTER_LIST.map((obj, i) => (
-                <div key={i}>
-                  <h3 className="font-medium text-base leading-[18px] uppercase mb-[26px]">
-                    {obj.title}
-                  </h3>
-                  <ul>
-                    {[obj.name, obj.nameTwo, obj.nameThree, obj.nameFour].map(
-                      (name, index) => (
-                        <li
-                          key={index}
-                          className="text-[#00000099] font-normal text-base leading-[19px] py-1"
+          </div>
+          <div>
+            <div className="flex items-center justify-between flex-wrap gap-[113px] max-sm:justify-start max-sm:gap-y-6 max-sm:gap-[50px] max-xl:gap-18 max-md:gap-6 max-lg:pt-10">
+              {FOOTER_LIST.map((item, i) => (
+                <div key={i} className="max-sm:max-w-[130px] max-sm:w-full">
+                  <p className="uppercase font-medium leading-[18px] max-md:text-sm">
+                    {item.title}
+                  </p>
+                  <ul className="pt-[26px] max-md:pt-4">
+                    {item.list.map((list, j) => (
+                      <li key={j} className="pb-4">
+                        <Link
+                          href={list.link}
+                          className="leading-[19px] text-black/60 whitespace-nowrap max-md:text-sm"
                         >
-                          <Link href="#">{name}</Link>
-                        </li>
-                      )
-                    )}
+                          {list.title}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               ))}
             </div>
           </div>
-        </footer>
-        <div className="w-full mx-auto max-w-[1240px] border border-solid mt-[50px] mb-5 border-[#0000001A]"></div>
-
+        </div>
+        <div className="w-full bg-black/10 h-[1px]"></div>
+        <div className="w-full flex items-center justify-between max-sm:flex-col max-sm:justify-center gap-4 pt-5 max-sm:pt-4 max-md:pb-[77px] pb-[82px]">
+          <p className="text-sm leading-[100%] text-black/60">
+            Shop.co © 2000-{year}, All Rights Reserved
+          </p>
+          <div className="flex items-center gap-3 max-md:gap-[10.3px] max-md:pt-4">
+            {PAYMENTS_METHOD_LIST.map((item, inedx) => (
+              <div key={inedx}>
+                <Image
+                  width={46.61}
+                  height={30.3}
+                  alt="payment-company"
+                  src={item}
+                  className="pointer-events-none payment-company-images max-md:h-[26px] max-md:w-[40px]"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
-};
+}
 
-export default Footer;
+export default Footer

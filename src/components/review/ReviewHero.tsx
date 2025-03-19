@@ -37,7 +37,7 @@ const ReviewHero: React.FC = () => {
     <>
       <Header />
       <div className="w-full max-w-[1240px] bg-[#0000001A] mx-auto my-6"></div>
-      <div className="flex items-center gap-2.5 max-w-[1240px]">
+      <div className="flex items-center gap-2.5 max-w-[1240px] w-full mx-auto">
         <p className="text-[#00000099]">Home</p>
         <NextMoveIcon />
         <p className="text-[#00000099]">Shop</p>
@@ -47,21 +47,27 @@ const ReviewHero: React.FC = () => {
         <p className="text-[#00000099]">T-Shirts</p>
       </div>
       <div className="flex items-center w-full max-w-[1240px] mx-auto gap-6 mt-6">
+        <div className="flex items-center flex-col gap-[14px]">
+          <Image src={product.image} alt="product" width={152} height={167} className=" w-full max-w-[152px] h-[167px]"/>
+          <Image src='/assets/images/webp/seleve-t-shirt-img-.webp' alt="product" width={152} height={167} className=" w-full max-w-[152px] h-[167px]"/>
+          <Image src='/assets/images/webp/skinny-jeans-img-one.webp' alt="product" width={152} height={167} className=" w-full max-w-[152px] h-[167px]"/>
+        </div>
         <Image
           src={product.image}
           alt={product.tittle}
-          width={400}
-          height={400}
+          width={444}
+          height={530}
+          className="w-full max-w-[444px] h-[530px]"
         />
-        <div>
+        <div className="w-full max-w-[600px]">
           <h1 className="text-2xl font-bold">{product.tittle}</h1>
           <Image src={product.rating} alt="rating" width={150} height={19} />
           <h2 className="text-xl font-bold">{product.price}</h2>
-          <p>
+          <p className="text-[#00000099] font-normal text-base">
             This graphic t-shirt which is perfect for any occasion. Crafted from
             a soft and breathable fabric, it offers superior comfort and style.
           </p>
-          <div className="w-full bg-[#0000001A] my-3"></div>
+          <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-3"></div>
 
           {/* Color Selection */}
           <p>Select Color</p>
@@ -80,7 +86,7 @@ const ReviewHero: React.FC = () => {
             ))}
           </div>
 
-          <div className="w-full bg-[#0000001A] my-3"></div>
+          <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-3"></div>
 
           {/* Size Selection */}
           <p>Select Size</p>
@@ -88,7 +94,7 @@ const ReviewHero: React.FC = () => {
             {["Small", "Medium", "Large", "X-Large"].map((size) => (
               <button
                 key={size}
-                className={`px-6 py-3 border rounded cursor-pointer ${
+                className={`px-6 py-3 border rounded-full cursor-pointer  ${
                   selectedSize === size ? "bg-black text-white" : "bg-gray-200"
                 }`}
                 onClick={() => setSelectedSize(size)}
@@ -98,7 +104,7 @@ const ReviewHero: React.FC = () => {
             ))}
           </div>
 
-          <div className="w-full bg-[#0000001A] my-3"></div>
+          <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-3"></div>
 
           {/* Quantity Selector */}
           <div className="flex items-center gap-4">

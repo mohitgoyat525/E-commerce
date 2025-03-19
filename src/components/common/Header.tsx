@@ -83,7 +83,12 @@ const Header = () => {
             >
               <ul className="flex items-center gap-5 max-lg:flex-col max-lg:justify-center">
                 {HEADER_LIST.map((obj, i) => (
-                  <li key={i} className='cursor-pointer font-normal text-base leading-[100%] max-lg:text-2xl'>{obj.name}</li>
+                  <li
+                    key={i}
+                    className="cursor-pointer font-normal text-base leading-[100%] max-lg:text-2xl"
+                  >
+                    {obj.name}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -103,7 +108,9 @@ const Header = () => {
             <div className="min-[1280px]:hidden">
               <SearchIcon />
             </div>
-            <ShopIcon />
+            <Link href="/cart">
+              <ShopIcon />
+            </Link>
           </div>
         </div>
       </nav>

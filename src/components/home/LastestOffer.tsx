@@ -1,0 +1,117 @@
+"use client";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { EmailIcon } from "@/utils/Icons";
+import Swal from "sweetalert2";
+
+const LatestOffer = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [email, setEmail] = useState("");
+
+  // Function to validate email format
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!email) {
+      Swal.fire({
+        title: "Error!",
+        text: "Email field cannot be empty.",
+        icon: "error",
+        confirmButtonColor: "#EF4444",
+      });
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      Swal.fire({
+        title: "Invalid Email!",
+        text: "Please enter a valid email address.",
+        icon: "warning",
+        confirmButtonColor: "#F59E0B",
+      });
+      return;
+    }
+
+    if (!form.current) return;
+
+    try {
+      const result = await emailjs.sendForm(
+        "service_oq1cf7s",
+        "template_dkufmac",
+        form.current,
+        "e8pPFGTd0j6uM6UBA"
+      );
+
+      if (result.text === "OK") {
+        Swal.fire({
+          title: "Success!",
+          text: "Your email has been sent successfully.",
+          icon: "success",
+          confirmButtonColor: "#10B981",
+        });
+        form.current.reset();
+        setEmail("");
+      } else {
+        throw new Error("Unexpected response from the server.");
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to send email. Please try again later.",
+        icon: "error",
+        confirmButtonColor: "#EF4444",
+      });
+      console.error("Email sending failed:", error);
+    } finally {
+     
+      
+    }
+  };
+
+  return (
+    <div className="max-w-[1240px] mx-auto rounded-[20px] flex max-lg:flex-col max-lg:gap-8 items-center justify-between bg-black container py-[43px] px-[64px] max-sm:px-6 max-md:px-7 max-lg:px-8">
+      <div className="max-w-[551px] max-lg:max-w-[unset]">
+        <h3 className="text-white font-integral-cf text-[40px] max-lg:text-4xl max-md:text-[32px] font-bold">
+          STAY UP TO DATE ABOUT OUR LATEST OFFERS
+        </h3>
+      </div>
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="max-w-[349px] flex flex-col gap-3.5 w-full"
+      >
+        <div className="w-full py-3 px-[17px] bg-white items-center rounded-[62px] flex">
+          <div className="flex w-full items-center gap-3.5">
+            <label className="cursor-pointer" htmlFor="mail">
+              <EmailIcon />
+            </label>
+            <div className="w-full">
+              <input
+                className="w-full text-black/40 outline-none leading-[100%]"
+                id="mail"
+                placeholder="Enter your email address"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-label="Enter your email to subscribe"
+              />
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          className={`text-black bg-white w-full max-w-[349px] rounded-full border border-solid border-white py-3 px-5 `}
+        >
+          Subscribe to Newsletter
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default LatestOffer;

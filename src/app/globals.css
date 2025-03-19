@@ -26,3 +26,7 @@ body{
 .font-santoshi-bold{
     font-family: santoshi-bold;
 }
+
+.footer-bg{
+  background: linear-gradient(180deg, rgba(255,255,255,1) 15%, rgba(240,240,240,1) 15%);
+}

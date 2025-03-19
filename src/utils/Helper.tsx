@@ -135,19 +135,19 @@ export const HAPPY_CUSTOMERS_LIST = [
 
 export const SOCIAL_LIST = [
   {
-    icon: <TwitterIcon />,
+    icon: <TwitterIcon myClassName="group-hover:fill-white" />,
     link: "https://x.com/?lang=en",
   },
   {
-    icon: <FacebookIcon/>,
+    icon: <FacebookIcon myClassName="group-hover:fill-white" />,
     link: "https://facebook.com",
   },
   {
-    icon: <InstagramIcon/>,
+    icon: <InstagramIcon myClassName="group-hover:fill-white" />,
     link: "https://instagram.com",
   },
   {
-    icon: <GithubIcon/>,
+    icon: <GithubIcon myClassName="group-hover:fill-white" />,
     link: "https://github.com",
   },
 ];
@@ -155,30 +155,46 @@ export const SOCIAL_LIST = [
 export const FOOTER_LIST = [
   {
     title: "Company",
-    name: "About",
-    nameTwo: "Features",
-    nameThree: "Works",
-    nameFour: "Career",
+    list: [
+      { title: "About", link: "/about" },
+      { title: "Features", link: "/features" },
+      { title: "Works", link: "/works" },
+      { title: "Career", link: "/career" },
+    ],
   },
   {
     title: "Help",
-    name: "Customer Support",
-    nameTwo: "Delivery Details",
-    nameThree: "Terms & Conditions",
-    nameFour: "Privacy Policy",
+    list: [
+      { title: "Customer Support", link: "/customer-support" },
+      { title: "Delivery-details", link: "/delivery-details" },
+      { title: "Terms & Conditions", link: "/terms-conditions" },
+      { title: "Privacy Policy", link: "/privacy-policy" },
+    ],
   },
   {
     title: "FAQ",
-    name: "Account",
-    nameTwo: "Manage Deliveries",
-    nameThree: "Orders",
-    nameFour: "Payments",
+    list: [
+      { title: "Account", link: "/about" },
+      { title: "Manage Deliveries", link: "/manage-deliveries" },
+      { title: "Orders", link: "/orders" },
+      { title: "Payments", link: "/payments" },
+    ],
   },
   {
     title: "Resources",
-    name: "Free eBooks",
-    nameTwo: "Development Tutorial",
-    nameThree: "How to - Blog",
-    nameFour: "Youtube Playlist",
+    list: [
+      { title: "Free eBooks", link: "/free-ebooks" },
+      { title: "Development Tutorial", link: "/development-tutorial" },
+      { title: "How to - Blog", link: "/how-to-blog" },
+      { title: "Youtube Playlist", link: "/youtube-playlist" },
+    ],
   },
+];
+
+export const PAYMENTS_METHOD_LIST = [
+  "/assets/images/webp/visa.webp",
+  "/assets/images/webp/master-card.webp",
+  "/assets/images/webp/paypal.webp",
+  "/assets/images/webp/apple-pay.webp",
+  "/assets/images/webp/g-pay.webp",
 ];
