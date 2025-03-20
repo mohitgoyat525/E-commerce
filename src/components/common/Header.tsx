@@ -31,10 +31,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    // Initial cart count load
     updateCartCount();
-
-    // Listen for storage changes
     window.addEventListener("storage", updateCartCount);
 
     const handleOverflow = () => {
