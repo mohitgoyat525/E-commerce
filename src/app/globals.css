@@ -42,3 +42,11 @@ body{
 .bg-brown{
     background-color: #4F4631;
 }
+
+.happy-swiper .swiper-wrapper .swiper-slide{
+  filter: blur(4px);
+}
+
+.happy-swiper .swiper-wrapper .swiper-slide-active , .swiper-slide-next , .swiper-slide-prev{
+  filter: blur(0px) !important;
+}

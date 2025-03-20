@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image';
 const Brands = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-black max-xl:px-4">
       <div className="flex items-center justify-between max-sm:justify-center max-sm:gap-5 flex-wrap max-w-[1280px] mx-auto py-[45px]">
         {BRANDS_LIST.map((obj, i) => (
           <Image
