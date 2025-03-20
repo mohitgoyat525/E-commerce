@@ -29,7 +29,7 @@ export const BRANDS_LIST = [
 export const NEW_ARRIVALS_LIST = [
   {
     image: "/assets/images/webp/t-shirt-img-one.webp",
-    tittle: "T-SHIRT WITH TAPE DETAILS",
+    tittle: "T SHIRT WITH TAPE DETAILS",
     rating: "/assets/images/svg/rating-star-4.5-img.svg",
     price: "$120",
   },
@@ -49,7 +49,7 @@ export const NEW_ARRIVALS_LIST = [
   },
   {
     image: "/assets/images/webp/seleve-t-shirt-img-.webp",
-    tittle: "SLEEVE STRIPED T-SHIRT",
+    tittle: "SLEEVE STRIPED T SHIRT",
     rating: "/assets/images/svg/rating-star-4.5-img.svg",
     price: "$130",
     cancelPrice: "$160",
@@ -70,7 +70,7 @@ export const TOP_SELLING_LIST = [
   },
   {
     image: "/assets/images/webp/orange-t-shirt-img.webp",
-    tittle: "COURAGE GRAPHIC T-SHIRT",
+    tittle: "COURAGE GRAPHIC T SHIRT",
     rating: "/assets/images/svg/rating-star-4-img.svg",
     price: "$145",
   },
@@ -258,7 +258,7 @@ export const YOU_MIGHT_LIST = [
   },
   {
     image: "/assets/images/webp/gradient-t-shirt.webp",
-    tittle: "Gradient Graphic T-shirt",
+    tittle: "Gradient Graphic T shirt",
     rating: "/assets/images/svg/rating-star-4-img.svg",
     price: "$145",
   },
@@ -270,7 +270,7 @@ export const YOU_MIGHT_LIST = [
   },
   {
     image: "/assets/images/webp/black-strip-t-shirt.webp",
-    tittle: "Black Striped T-shirt",
+    tittle: "Black Striped T shirt",
     rating: "/assets/images/svg/rating-star-4.5-img.svg",
     price: "$120",
     cancelPrice: "$140",
@@ -278,6 +278,6 @@ export const YOU_MIGHT_LIST = [
   },
 ];
 
-export const SELECT_COLOR = ["brown", "green", "blue"];
+export const SELECT_COLOR_LIST = ["#4F4631", "#314F4A", "#31344F"];
 
-export const SELECT_SIZE = ["Small", "Medium", "Large", "X-Large"];
+export const SELECT_SIZE_LIST = ["Small", "Medium", "Large", "X-Large"];

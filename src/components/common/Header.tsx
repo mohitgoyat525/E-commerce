@@ -37,12 +37,12 @@ const Header = () => {
               Sign Up Now
             </span>
           </p>
-          <p className="absolute right-0 cursor-pointer max-sm:hidden">
+          <p className="absolute right-0 cursor-pointer max-sm:hidden max-xl:right-4">
             <CrossIcon />
           </p>
         </div>
       </div>
-      <nav className="max-w-[1240px] mx-auto px-4 my-6">
+      <nav className="max-w-[1240px] mx-auto my-6">
         <div className="flex items-center justify-between ">
           <div className="flex items-center gap-10">
             <button
