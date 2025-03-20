@@ -13,7 +13,7 @@ const NewArrivals = () => {
       showDiscount={(i) => i !== 0}
         />
         </div>
-      <div className="w-full max-w-[1240px] mx-auto border border-solid border-[#0000001A] my-16 max-xl:my-12 max-lg:my-10"></div>
+      <div className="w-full max-w-[1240px] mx-auto border border-solid border-[#0000001A] max-sm:max-w-[358px] my-16 max-xl:my-12 max-lg:my-10"></div>
       </>
   );
 };

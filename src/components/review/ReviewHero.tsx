@@ -5,37 +5,42 @@ import Header from "../common/Header";
 import { CheckIcon, MinusIcon, NextMoveIcon, PlusIcon } from "@/utils/Icons";
 import Image from "next/image";
 import Swal from "sweetalert2";
-import {TOP_SELLING_LIST,NEW_ARRIVALS_LIST,YOU_MIGHT_LIST,SELECT_SIZE_LIST,SELECT_COLOR_LIST,} from "@/utils/Helper";
+import {
+  TOP_SELLING_LIST,
+  NEW_ARRIVALS_LIST,
+  YOU_MIGHT_LIST,
+  SELECT_SIZE_LIST,
+  SELECT_COLOR_LIST,
+} from "@/utils/Helper";
 
-// Define the Product interface
+// Define the Product interface with discount
 interface Product {
   tittle: string;
   image: string;
   rating: string;
   price: string;
+  discount?: number; // Optional discount property (percentage)
   additionalImages?: string[];
+  cancelPrice?: string;
 }
 
 const ReviewHero: React.FC = () => {
-  // Combine product lists
   const productList: Product[] = [
     ...TOP_SELLING_LIST,
     ...NEW_ARRIVALS_LIST,
     ...YOU_MIGHT_LIST,
   ];
   const pathname = usePathname();
-  const productSlug = pathname.split("/").pop(); // Extract last segment of URL
-
-  // State declarations with TypeScript types
+  const productSlug = pathname.split("/").pop();
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>("#4F4631");
   const [selectedSize, setSelectedSize] = useState<string>("Medium");
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedImage, setSelectedImage] = useState<string>("");
+  const [showDiscount, setShowDiscount] = useState<boolean>(false);
   const defaultImageTwo = "/assets/images/webp/skinny-jeans-img-one.webp";
   const defaultImageThree = "/assets/images/webp/t-shirt-img-one.webp";
 
-  // Effect to load product based on slug
   useEffect(() => {
     if (productSlug) {
       const formattedSlug = productSlug.replace(/-/g, " ");
@@ -45,56 +50,53 @@ const ReviewHero: React.FC = () => {
       setProduct(foundProduct ?? null);
       if (foundProduct) {
         setSelectedImage(foundProduct.image);
+        setShowDiscount(!!foundProduct.discount && foundProduct.discount > 0);
       }
     }
   }, [productSlug]);
 
-  // Loading state
   if (!product) return <p>Loading...</p>;
- const handleAddToCart = () => {
-   const cartItem = {
-     selectedSize: selectedSize,
-     selectedColor: selectedColor,
-     quantity: quantity,
-     selectedImg: selectedImage,
-     heading: product.tittle, // Use product.tittle instead of heading state
-     price: product.price, // Use product.price instead of price state
-   };
 
-   // Get existing items from localStorage
-   const existingItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+  const handleAddToCart = () => {
+    const cartItem = {
+      selectedSize: selectedSize,
+      selectedColor: selectedColor,
+      quantity: quantity,
+      selectedImg: selectedImage,
+      heading: product.tittle,
+      price: product.price,
+      discount: product.discount,
+    };
 
-   // Check if item already exists in cart
-   const isDuplicate = existingItems.some(
-     (item: any) =>
-       item.selectedSize === cartItem.selectedSize &&
-       item.selectedColor === cartItem.selectedColor &&
-       item.selectedImg === cartItem.selectedImg &&
-       item.heading === cartItem.heading &&
-       item.price === cartItem.price
-   );
+    const existingItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
-   if (isDuplicate) {
-     throw Swal.fire({
-       title: "Duplicate!",
-       text: "This Items Are Already in Your Cart",
-       icon: "error",
-       confirmButtonColor: "#EF4444",
-     });
-   } else {
-     // Add new item to cart if no duplicate
-     const updatedItems = [...existingItems, cartItem];
-     localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+    const isDuplicate = existingItems.some(
+      (item: any) =>
+        item.selectedSize === cartItem.selectedSize &&
+        item.selectedColor === cartItem.selectedColor &&
+        item.selectedImg === cartItem.selectedImg &&
+        item.heading === cartItem.heading &&
+        item.price === cartItem.price
+    );
 
-     // Dispatch event to update header
-     window.dispatchEvent(new Event("storage"));
-   }
- };
+    if (isDuplicate) {
+      throw Swal.fire({
+        title: "Duplicate!",
+        text: "This Items Are Already in Your Cart",
+        icon: "error",
+        confirmButtonColor: "#EF4444",
+      });
+    } else {
+      const updatedItems = [...existingItems, cartItem];
+      localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+      window.dispatchEvent(new Event("storage"));
+    }
+  };
 
   return (
     <>
-        <Header />
-        <div className="w-full max-w-[1240px] mx-auto border border-solid border-[#0000001A]"></div>
+      <Header />
+      <div className="w-full max-w-[1240px] mx-auto border border-solid border-[#0000001A]"></div>
       <div className="px-4">
         <div className="w-full max-w-[1240px] bg-[#0000001A] mx-auto my-6"></div>
         <div className="flex items-center gap-2.5 max-w-[1240px] w-full mx-auto">
@@ -114,10 +116,9 @@ const ReviewHero: React.FC = () => {
             T-Shirts
           </p>
         </div>
-        <div className="flex items-center w-full max-w-[1240px] max-lg:flex-wrap mx-auto gap-6 mt-6">
+        <div className="flex w-full max-w-[1240px] max-lg:flex-wrap mx-auto gap-6 mt-6">
           <div className="flex items-center gap-4 max-[1025px]:flex max-xl:flex-col-reverse max-lg:mx-auto">
-            <div className="max-xl:flex max-xl:items-center  gap-[14px]">
-              {/* Thumbnail Images */}
+            <div className="max-xl:flex max-xl:items-center gap-[14px]">
               <Image
                 id="one"
                 src={product.image}
@@ -142,11 +143,10 @@ const ReviewHero: React.FC = () => {
                 alt="product thumbnail 3"
                 width={152}
                 height={167}
-                className="w-full max-w-[152px] h-[167px] max-xl:max-w-[130px] max-xl:h-[130px]  max-sm:max-w-[111px] max-sm:h-[106px] cursor-pointer"
+                className="w-full max-w-[152px] h-[167px] max-xl:max-w-[130px] max-xl:h-[130px] max-sm:max-w-[111px] max-sm:h-[106px] cursor-pointer"
                 onClick={() => setSelectedImage(defaultImageThree)}
               />
             </div>
-            {/* Main Image */}
             <Image
               id="main"
               src={selectedImage}
@@ -157,7 +157,7 @@ const ReviewHero: React.FC = () => {
             />
           </div>
           <div className="w-full max-w-[600px] max-xl:max-w-[570px] max-lg:mx-auto max-lg:max-w-full">
-            <h2 className="text-[40px] font-bold leading-[100%]  max-md:text-3xl max-sm:text-2xl font-intergal-cf whitespace-nowrap max-xl:whitespace-break-spaces mb-3.5">
+            <h2 className="text-[40px] font-bold leading-[100%] max-md:text-3xl max-sm:text-2xl font-intergal-cf whitespace-nowrap max-xl:whitespace-break-spaces mb-3.5">
               {product.tittle}
             </h2>
             <Image src={product.rating} alt="rating" width={150} height={19} />
@@ -166,21 +166,24 @@ const ReviewHero: React.FC = () => {
                 {product.price}
               </h2>
               <p className="line-through text-[#0000004D] text-[32px] font-bold leading-[100%]">
-                $300
+                {product.cancelPrice}
               </p>
-              <div className="flex items-center justify-center rounded-full min-w-[72px] h-[34px] bg-[#FF33331A]">
-                <p className="text-[#FF3333] font-normal text-base leading-[100%]">
-                  -40%
-                </p>
-              </div>
+              {showDiscount && (
+                <>
+                  <div className="flex items-center justify-center rounded-full min-w-[72px] h-[34px] bg-[#FF33331A]">
+                    <p className="text-[#FF3333] font-normal text-base leading-[100%]">
+                      -{product.discount}%
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
             <p className="text-[#00000099] font-normal text-base leading-[100%] mt-5">
               This graphic t-shirt is perfect for any occasion. Crafted from a
               soft and breathable fabric, it offers superior comfort and style.
             </p>
-            <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-6"></div>
+            <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-6 max-lg:max-w-[700px] max-sm:max-w-[358px]"></div>
 
-            {/* Color Selection */}
             <p className="font-normal text-base text-[#00000099] leading-[100%]">
               Select Color
             </p>
@@ -188,8 +191,7 @@ const ReviewHero: React.FC = () => {
               {SELECT_COLOR_LIST.map((color) => (
                 <div
                   key={color}
-                  className={`size-[37px] rounded-full flex items-center justify-center cursor-pointer`}
-                  style={{ backgroundColor: color }}
+                  className={`size-[37px] rounded-full flex items-center justify-center cursor-pointer ${color}`}
                   onClick={() => setSelectedColor(color)}
                 >
                   {selectedColor === color && <CheckIcon />}
@@ -197,8 +199,7 @@ const ReviewHero: React.FC = () => {
               ))}
             </div>
 
-            <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-6"></div>
-            {/* Size Selection */}
+            <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-6 max-lg:max-w-[700px] max-sm:max-w-[358px]"></div>
             <p className="font-normal text-base text-[#00000099] leading-[100%]">
               Select Size
             </p>
@@ -220,7 +221,6 @@ const ReviewHero: React.FC = () => {
 
             <div className="w-full max-w-[590px] border border-solid border-[#0000001A] my-6"></div>
 
-            {/* Quantity Selector */}
             <div className="flex items-center gap-4">
               <div className="flex items-center justify-between w-full max-w-[170px] rounded-full bg-[#F0F0F0] p-2 h-[52px]">
                 <button
@@ -239,7 +239,10 @@ const ReviewHero: React.FC = () => {
                   <PlusIcon />
                 </button>
               </div>
-              <button onClick={handleAddToCart} className="w-full bg-black text-white py-3  rounded-full h-[52px] font-medium text-base leading-[100%]">
+              <button
+                onClick={handleAddToCart}
+                className="w-full bg-black text-white py-3 rounded-full h-[52px] font-medium text-base leading-[100%]"
+              >
                 Add to Cart
               </button>
             </div>

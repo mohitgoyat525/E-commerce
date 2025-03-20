@@ -19,8 +19,8 @@ const Hero = () => {
             <button className="bg-black text-white flex items-center justify-center mt-5 w-[210px] min-w-[210px] max-sm:min-w-full max-sm:w-full h-[52px] rounded-full border border-solid border-black transition-all ease-linear duration-300 hover:bg-white hover:text-black">
               Shop Now
             </button>
-            <div className="flex items-center justify-between mt-12 max-sm:mt-5 flex-wrap max-md:justify-center max-md:gap-7">
-              <div className="max-md:flex flex gap-7 max-md:justify-center">
+            <div className="flex items-center gap-7 mt-12 max-sm:mt-5 flex-wrap max-md:justify-center max-md:gap-7">
+              <div className="flex gap-7 items-center max-md:justify-center">
                 <div className="flex flex-col">
                   <h3 className="font-bold text-[40px] leading-[100%] max-md:text-2xl font-santoshi-bold">
                     200+

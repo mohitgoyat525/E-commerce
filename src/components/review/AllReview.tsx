@@ -10,7 +10,7 @@ const AllReviews = () => {
   const tab = searchParams.get("tab") || "rating-and-reviews";
 
   return (
-    <div className="px-4 pt-20">
+    <div className="px-4 pt-20 max-sm:pt-[50px]">
       <div className="flex mx-auto container relative max-w-[1240px]">
         <div className="w-full h-[1px] bg-black/10 absolute bottom-0"></div>
         {TAB_LIST.map((item, index) => {
@@ -29,7 +29,7 @@ const AllReviews = () => {
             >
               <Link
                 href={`?tab=${itemSlug}`}
-                className={`text-center text-xl max-sm:text-base max-md:text-lg whitespace-nowrap leading-[100%] ${
+                className={`text-center text-xl max-sm:px-3 max-sm:text-base max-md:text-lg whitespace-nowrap leading-[100%] ${
                   isActive && "font-medium"
                 }`}
               >

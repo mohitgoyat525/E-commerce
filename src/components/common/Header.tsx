@@ -64,7 +64,7 @@ const Header = () => {
       )}
       <nav className="max-w-[1240px] mx-auto my-6 max-xl:px-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="flex flex-col justify-center items-center z-[100] gap-1 lg:hidden relative size-6"
@@ -136,13 +136,12 @@ const Header = () => {
                       )}
                     </div>
                   ) : (
-                    <Link
-                      href={obj.link}
+                    <p
                       className="font-normal text-base leading-[100%] max-lg:text-2xl transition-all ease-linear duration-300 hover:text-blue-500"
                       onClick={handleLinkClick}
                     >
                       {obj.name}
-                    </Link>
+                    </p>
                   )}
                 </li>
               ))}
@@ -159,14 +158,14 @@ const Header = () => {
               placeholder="Search for products..."
             />
           </div>
-          <div className="flex items-center gap-[40px]">
+          <div className="flex items-center gap-3">
             <div className="min-[1280px]:hidden">
               <SearchIcon />
             </div>
             <Link href="/cart" className="relative" onClick={handleLinkClick}>
               <ShopIcon />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full size-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}

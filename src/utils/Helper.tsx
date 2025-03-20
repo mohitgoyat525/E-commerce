@@ -49,7 +49,7 @@ export const NEW_ARRIVALS_LIST = [
     rating: "/assets/images/svg/rating-star-3.5-img.svg",
     price: "$240",
     cancelPrice: "$260",
-    discount: "-20%",
+    discount: 20,
   },
   {
     image: "/assets/images/webp/checked-shirt-img-one.webp",
@@ -63,7 +63,7 @@ export const NEW_ARRIVALS_LIST = [
     rating: "/assets/images/svg/rating-star-4.5-img.svg",
     price: "$130",
     cancelPrice: "$160",
-    discount: "-30%",
+    discount: 30,
   },
 ];
 
@@ -76,7 +76,7 @@ export const TOP_SELLING_LIST = [
     rating: "/assets/images/svg/rating-star-5-img.svg",
     price: "$212",
     cancelPrice: "$232",
-    discount: "-20%",
+    discount: 20,
   },
   {
     image: "/assets/images/webp/orange-t-shirt-img.webp",
@@ -264,7 +264,7 @@ export const YOU_MIGHT_LIST = [
     rating: "/assets/images/svg/rating-star-4-img.svg",
     price: "$212",
     cancelPrice: "$242",
-    discount: "-20%",
+    discount: 20,
   },
   {
     image: "/assets/images/webp/gradient-t-shirt.webp",
@@ -284,10 +284,10 @@ export const YOU_MIGHT_LIST = [
     rating: "/assets/images/svg/rating-star-4.5-img.svg",
     price: "$120",
     cancelPrice: "$140",
-    discount: "-20%",
+    discount: 20,
   },
 ];
 
-export const SELECT_COLOR_LIST = ["Green", "Red", "Blue"];
+export const SELECT_COLOR_LIST = ["bg-brown", "bg-greenLight", "bg-darkBlue"];
 
 export const SELECT_SIZE_LIST = ["Small", "Medium", "Large", "X-Large"];

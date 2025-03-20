@@ -85,12 +85,9 @@ const HeroCart = () => {
         </h1>
         {cartItems.length > 0 ? (
           <div className="flex justify-between mt-6 max-lg:flex-wrap max-xl:gap-5">
-            <div className="flex flex-col gap-6 w-full max-w-[715px] max-lg:max-w-full ">
+            <div className="flex flex-col w-full max-w-[715px] max-lg:max-w-full max-sm:p-3.5 border border-solid border-[#0000001A] py-5 px-6 rounded-[12px] ">
               {cartItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="border border-solid border-[#0000001A] p-4 rounded-[12px]"
-                >
+                <div key={index} className="">
                   <div className="flex items-center max-w-[667px] gap-3 max-lg:max-w-full">
                     <Image
                       src={item.selectedImg}
@@ -123,7 +120,7 @@ const HeroCart = () => {
                         <p className="font-bold text-2xl leading-[100%] max-sm:text-xl">
                           {item.price}
                         </p>
-                        <div className="flex items-center justify-between w-full max-w-[126px] rounded-full bg-[#F0F0F0] p-2 h-[52px]">
+                        <div className="flex items-center justify-between w-full max-w-[126px] max-sm:max-w-[105px] max-sm:h-[31px] rounded-full bg-[#F0F0F0] p-2 h-[52px]">
                           <button
                             className="px-3"
                             onClick={() =>
@@ -132,7 +129,7 @@ const HeroCart = () => {
                           >
                             <MinusIcon />
                           </button>
-                          <p>{item.quantity}</p>
+                          <p className="text-sm font-normal leading-[100%]">{item.quantity}</p>
                           <button
                             className="px-3"
                             onClick={() =>
@@ -145,10 +142,11 @@ const HeroCart = () => {
                       </div>
                     </div>
                   </div>
+                  <div className="w-full border border-solid border-[#0000001A] my-6 max-sm:my-4"></div>
                 </div>
               ))}
             </div>
-            <div className="border border-solid border-[#0000001A] max-lg:max-w-full max-sm:h-[390px] pt-5 px-6 max-xl:max-w-[470px] rounded-[20px] w-full max-w-[505px] h-[458px]">
+            <div className="border border-solid border-[#0000001A] max-sm:p-5 max-lg:max-w-full max-sm:h-[390px] pt-5 px-6 max-xl:max-w-[470px] rounded-[20px] w-full max-w-[505px] h-[458px]">
               <h2 className="font-bold text-2xl leading-[100%]">
                 Order Summary
               </h2>
@@ -187,7 +185,7 @@ const HeroCart = () => {
                       className="w-full bg-transparent outline-none text-base font-normal"
                     />
                   </div>
-                  <button className="bg-black transition-all ease-linear duration-300 hover:bg-gray-700 rounded-full text-white h-[48px] text-base font-normal leading-[100%] flex items-center justify-center border border-solid border-transparent min-w-[119px]">
+                  <button className="bg-black max-sm:min-w-[88px] max-sm:h-[48px] transition-all ease-linear duration-300 hover:bg-gray-700 rounded-full text-white h-[48px] text-base font-normal leading-[100%] flex items-center justify-center border border-solid border-transparent min-w-[119px]">
                     Apply
                   </button>
                 </div>
@@ -202,7 +200,7 @@ const HeroCart = () => {
           </div>
         ) : (
           <p className="text-center font-extrabold text-4xl max-sm:text-2xl mt-6">
-            Your cart is empty.
+            There is nothing in your Cart.
           </p>
         )}
       </div>

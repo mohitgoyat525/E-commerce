@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { REVIEWS_LIST } from "@/utils/Helper";
-import { ThreeDots } from "@/utils/Icons";
+import { FilterIcon, ThreeDots } from "@/utils/Icons";
 import Image from "next/image";
 const ReviewsData = () => {
   const [sortOption, setSortOption] = useState("Oldest");
@@ -30,14 +30,24 @@ const ReviewsData = () => {
               ({REVIEWS_LIST.length})
             </p>
           </div>
-          <select
-            className="cursor-pointer outline-none rounded-[62px] font-medium py-[13px] px-5 bg-light-blue"
-            value={sortOption}
-            onChange={handleSortChange}
-          >
-            <option>Oldest</option>
-            <option>Latest</option>
-          </select>
+          <div className="flex items-center gap-3">
+            <select
+              className="cursor-pointer outline-none rounded-[62px] font-medium py-[13px] px-5 bg-light-blue max-sm:hidden"
+              value={sortOption}
+              onChange={handleSortChange}
+            >
+              <option>Oldest</option>
+              <option>Latest</option>
+            </select>
+            <div className="flex items-center gap-3">
+              <div className="sm:hidden">
+                <FilterIcon />
+              </div>
+              <button className="text-white bg-black font-medium text-xs leading-[100%] h-10 min-w-[113px] flex items-center justify-center transition-all ease-linear duration-300 hover:bg-white hover:text-black hover:border-black border border-solid sm:hidden rounded-full">
+                Write a Review
+              </button>
+            </div>
+          </div>
         </div>
         <div className="flex w-full max-w-[1240px] pt-7 flex-wrap lg:gap-x-[1.62%] max-lg:gap-5 gap-y-5">
           {sortedReviews.map((item, index) => (
@@ -55,16 +65,25 @@ const ReviewsData = () => {
                 <p className="font-bold text-xl leading-[100%]">
                   {item.userName}
                 </p>
-                      <Image src="/assets/images/svg/check-box-img.svg" alt='check' width={19} height={19} />
+                <Image
+                  src="/assets/images/svg/check-box-img.svg"
+                  alt="check"
+                  width={19}
+                  height={19}
+                />
               </div>
-            
-                  <p className="text-black/60 mt-3 mb-6 font-normal text-sm">{item.description}</p>
-                  <p className="font-medium text-black/60">{item.postDate}</p>
+
+              <p className="text-black/60 mt-3 mb-6 font-normal text-sm">
+                {item.description}
+              </p>
+              <p className="font-medium text-black/60">{item.postDate}</p>
             </div>
           ))}
         </div>
         <div className="flex justify-center items-center w-full py-9">
-                  <button className="py-[15px] px-[45px] border-black/10 hover:bg-black hover:text-white border border-solid rounded-full transition-all ease-linear duration-300">Load More Reviews</button>
+          <button className="py-[15px] px-[45px] border-black/10 hover:bg-black hover:text-white border border-solid rounded-full transition-all ease-linear duration-300">
+            Load More Reviews
+          </button>
         </div>
       </div>
     </div>

@@ -10,34 +10,34 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { NextArrowIcon, PrevArrowIcon } from "@/utils/Icons";
 
 const HappyCustomer = () => {
-  const swiperRef = useRef<any>(null); // Swiper instance ref
+  const swiperRef = useRef<any>(null);
 
   return (
     <>
-      <div className="max-w-[1240px] mx-auto pt-[80px]">
-        <CustomHeading
-          myClass="!text-start"
-          headingText="OUR HAPPY CUSTOMERS"
-        />
+      <div className="max-w-[1240px] mx-auto pt-[80px] max-md:pt-[50px] max-xl:px-4">
+        <div className="flex items-end justify-between">
+          <CustomHeading
+            myClass="!text-start"
+            headingText="OUR HAPPY CUSTOMERS"
+          />
+          <div className="flex justify-end gap-4 ">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="cursor-pointer"
+            >
+              <PrevArrowIcon />
+            </button>
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
+              className="cursor-pointer"
+            >
+              <NextArrowIcon />
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className="w-full px-4 mx-auto mt-10">
-        {/* Navigation Buttons */}
-        <div className="flex justify-end gap-4 mb-4">
-          <button
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="cursor-pointer"
-          >
-            <PrevArrowIcon />
-          </button>
-          <button
-            onClick={() => swiperRef.current?.slideNext()}
-            className="cursor-pointer"
-          >
-            <NextArrowIcon />
-          </button>
-        </div>
-
+      <div className="w-full px-4 mx-auto mt-10 max-md:mt-6">
         <Swiper
           spaceBetween={20}
           slidesPerView={3}
@@ -75,8 +75,8 @@ const HappyCustomer = () => {
                     height={20}
                   />
                 </div>
-                <p className="text-base font-normal text-[#00000099]">
-                  “{customer.description}”
+                <p className="text-base font-normal text-[#00000099] leading-[22px] max-sm:text-sm max-sm:leading-5">
+                  {customer.description}
                 </p>
               </div>
             </SwiperSlide>

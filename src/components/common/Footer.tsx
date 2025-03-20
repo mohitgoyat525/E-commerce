@@ -7,7 +7,7 @@ import Image from 'next/image';
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <div className="footer-bg px-4 mt-[80px]">
+    <div className="footer-bg px-4 mt-[80px] max-md:mt-[50px]">
       <LastestOffer />
       <div className="max-w-[1240px] mx-auto  container">
         <div className="flex gap-[113.5px] max-lg:gap-0 py-[50px] max-sm:py-[31px] max-md:py-10 max-lg:py-12 max-lg:flex-col gap-y-10">
@@ -66,13 +66,13 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-3 max-md:gap-[10.3px] max-md:pt-4">
             {PAYMENTS_METHOD_LIST.map((item, inedx) => (
-              <div key={inedx}>
+              <div key={inedx} className='cursor-pointer'>
                 <Image
                   width={46.61}
                   height={30.3}
                   alt="payment-company"
                   src={item}
-                  className="pointer-events-none payment-company-images max-md:h-[26px] max-md:w-[40px]"
+                  className="pointer-events-none cursor-pointer max-md:h-[26px] max-md:w-[40px]"
                 />
               </div>
             ))}

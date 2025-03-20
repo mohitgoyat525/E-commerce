@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 const LatestOffer = () => {
   const form = useRef<HTMLFormElement>(null);
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
-  // Function to validate email format
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -23,20 +23,18 @@ const LatestOffer = () => {
         icon: "error",
         confirmButtonColor: "#EF4444",
       });
+      setEmailError("");
       return;
     }
 
     if (!isValidEmail(email)) {
-      Swal.fire({
-        title: "Invalid Email!",
-        text: "Please enter a valid email address.",
-        icon: "warning",
-        confirmButtonColor: "#F59E0B",
-      });
+      setEmailError("Please add proper email"); 
       return;
     }
 
     if (!form.current) return;
+
+    setEmailError("");
 
     try {
       const result = await emailjs.sendForm(
@@ -67,8 +65,6 @@ const LatestOffer = () => {
       });
       console.error("Email sending failed:", error);
     } finally {
-     
-      
     }
   };
 
@@ -91,18 +87,20 @@ const LatestOffer = () => {
             </label>
             <div className="w-full">
               <input
-                className="w-full text-black/40 outline-none leading-[100%]"
+                className="w-full outline-none leading-[100%] bg-transparent placeholder:text-[#00000066] font-normal text-base placeholder:text-base "
                 id="mail"
                 placeholder="Enter your email address"
                 type="email"
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                aria-label="Enter your email to subscribe"
               />
             </div>
           </div>
         </div>
+        {emailError && (
+          <p className="text-red-500 text-sm mt-1">{emailError}</p>
+        )}
         <button
           type="submit"
           className={`text-black bg-white w-full max-w-[349px] rounded-full border border-solid border-white py-3 px-5  transition-all ease-linear duration-300 hover:bg-black hover:text-white hover:border-white`}

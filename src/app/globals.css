@@ -30,3 +30,15 @@ body{
 .footer-bg{
   background: linear-gradient(180deg, rgba(255,255,255,1) 15%, rgba(240,240,240,1) 15%);
 }
+
+.bg-darkBlue{
+    background-color: #31344F;
+}
+
+.bg-greenLight{
+    background-color: #314F4A;
+}
+
+.bg-brown{
+    background-color: #4F4631;
+}
