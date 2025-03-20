@@ -39,6 +39,8 @@ const ReviewHero: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>("");
   const defaultImageTwo = "/assets/images/webp/skinny-jeans-img-one.webp";
   const defaultImageThree = "/assets/images/webp/t-shirt-img-one.webp";
+  const [heading, setHeading] = useState<string>("");
+  const [price, setPrice] = useState<number>(0);
 
   // Effect to load product based on slug
   useEffect(() => {
@@ -50,12 +52,33 @@ const ReviewHero: React.FC = () => {
       setProduct(foundProduct ?? null);
       if (foundProduct) {
         setSelectedImage(foundProduct.image);
+        setHeading(foundProduct.tittle); // Set heading from product title
+        setPrice(parseFloat(foundProduct.price.replace("$", ""))); // Set price, removing $ and converting to number
       }
     }
   }, [productSlug]);
 
   // Loading state
   if (!product) return <p>Loading...</p>;
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      selectedSize: selectedSize,
+      selectedColor: selectedColor,
+      quantity: quantity,
+      selectedImg: selectedImage,
+      heading: heading,
+      price: price,
+    };
+
+    // Add to localStorage
+    const existingItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    const updatedItems = [...existingItems, cartItem];
+    localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+
+    // Dispatch event to update header
+    window.dispatchEvent(new Event("storage"));
+  };
 
   return (
     <>
@@ -126,12 +149,12 @@ const ReviewHero: React.FC = () => {
           </div>
           <div className="w-full max-w-[600px] max-xl:max-w-[570px] max-lg:mx-auto max-lg:max-w-full">
             <h2 className="text-[40px] font-bold leading-[100%]  max-md:text-3xl max-sm:text-2xl font-intergal-cf whitespace-nowrap max-xl:whitespace-break-spaces mb-3.5">
-              {product.tittle}
+              {heading} {/* Use heading state */}
             </h2>
             <Image src={product.rating} alt="rating" width={150} height={19} />
             <div className="flex items-center gap-3 mt-3.5">
               <h2 className="text-[32px] leading-[100%] font-bold">
-                {product.price}
+                ${price.toFixed(2)} {/* Use price state */}
               </h2>
               <p className="line-through text-[#0000004D] text-[32px] font-bold leading-[100%]">
                 $300
@@ -207,7 +230,10 @@ const ReviewHero: React.FC = () => {
                   <PlusIcon />
                 </button>
               </div>
-              <button className="w-full bg-black text-white py-3  rounded-full h-[52px] font-medium text-base leading-[100%]">
+              <button
+                onClick={handleAddToCart}
+                className="w-full bg-black text-white py-3 rounded-full h-[52px] font-medium text-base leading-[100%]"
+              >
                 Add to Cart
               </button>
             </div>
