@@ -1,5 +1,5 @@
 
-import { FacebookIcon, GithubIcon, InstagramIcon, TwitterIcon } from "./Icons";
+import { FacebookIcon, FourHalfStar, FourStar, GithubIcon, InstagramIcon, ThreeHalfStar, TwitterIcon } from "./Icons";
 
 export const HEADER_LIST: { name: string; link?: string }[] = [
   {
@@ -87,6 +87,8 @@ export const TOP_SELLING_LIST = [
     price: "$210",
   },
 ];
+
+export const TAB_LIST = ["Product Details", "Rating & Reviews", "FAQs"];
 
 export const HAPPY_CUSTOMERS_LIST = [
   {
@@ -198,3 +200,84 @@ export const PAYMENTS_METHOD_LIST = [
   "/assets/images/webp/apple-pay.webp",
   "/assets/images/webp/g-pay.webp",
 ];
+
+export const REVIEWS_LIST = [
+  {
+    reviewsStart: <FourHalfStar />,
+    userName: "Samantha D.",
+    description:
+      "I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt.",
+    postDate: "Posted on August 14, 2023",
+  },
+  {
+    reviewsStart: <FourStar />,
+    userName: "Alex M.",
+    description:
+      "The t-shirt exceeded my expectations! The colors are vibrant and the print quality is top-notch. Being a UI/UX designer myself, I'm quite picky about aesthetics, and this t-shirt definitely gets a thumbs up from me.",
+    postDate: "Posted on August 15, 2023",
+  },
+  {
+    reviewsStart: <ThreeHalfStar />,
+    userName: "Ethan R.",
+    description:
+      "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
+    postDate: "Posted on August 16, 2023",
+  },
+  {
+    reviewsStart: <FourStar />,
+    userName: "Olivia P.",
+    description:
+      "As a UI/UX enthusiast, I value simplicity and functionality. This t-shirt not only represents those principles but also feels great to wear. It's evident that the designer poured their creativity into making this t-shirt stand out.",
+    postDate: "Posted on August 17, 2023",
+  },
+  {
+    reviewsStart: <FourStar />,
+    userName: "Liam K.",
+    description:
+      "This t-shirt is a fusion of comfort and creativity. The fabric is soft, and the design speaks volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for both design and fashion.",
+    postDate: "Posted on August 18, 2023",
+  },
+  {
+    reviewsStart: <FourHalfStar />,
+    userName: "Ava H.",
+    description:
+      "I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and thoughtful layout of the design make this shirt a conversation starter.",
+    postDate: "Posted on August 19, 2023",
+  },
+];
+
+
+export const YOU_MIGHT_LIST = [
+  {
+    image: "/assets/images/webp/polo-t-shirt.webp",
+    tittle: "Polo with Contrast Trims",
+    rating: "/assets/images/svg/rating-star-4-img.svg",
+    price: "$212",
+    cancelPrice: "$242",
+    discount: "-20%",
+  },
+  {
+    image: "/assets/images/webp/gradient-t-shirt.webp",
+    tittle: "Gradient Graphic T-shirt",
+    rating: "/assets/images/svg/rating-star-4-img.svg",
+    price: "$145",
+  },
+  {
+    image: "/assets/images/webp/polo-detail-t-shirt.webp",
+    tittle: "Polo with Tipping Details",
+    rating: "/assets/images/svg/rating-star-3-img.svg",
+    price: "$80",
+  },
+  {
+    image: "/assets/images/webp/black-strip-t-shirt.webp",
+    tittle: "Black Striped T-shirt",
+    rating: "/assets/images/svg/rating-star-4.5-img.svg",
+    price: "$120",
+    cancelPrice: "$140",
+    discount: "-20%",
+  },
+];
+
+export const SELECT_COLOR = ["brown", "green", "blue"];
+
+export const SELECT_SIZE = ["Small", "Medium", "Large", "X-Large"];

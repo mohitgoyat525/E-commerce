@@ -27,7 +27,7 @@ const CustomProduct: React.FC<ProductSliderProps> = ({
   showDiscount,
 }) => {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden px-4">
       <CustomHeading myClass="mt-5" headingText={tittle} />
       <div className="max-w-[1240px] mx-auto mt-[55px] max-sm:flex max-sm:items-center max-sm:justify-center">
         <Swiper
@@ -46,9 +46,9 @@ const CustomProduct: React.FC<ProductSliderProps> = ({
                 href={`/product/${
                   obj?.tittle
                     ? obj.tittle.toLowerCase().replace(/\s+/g, "-")
-                    : "default-title"
-                }`} 
-                className="w-full max-sm:max-w-[295px] mx-auto"
+                    : "default-tittle"
+                }`}
+                className="w-full max-sm:max-w-[295px] mx-auto max-sm:flex max-sm:flex-col max-sm:justify-center"
               >
                 <Image
                   src={obj.image}
