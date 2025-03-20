@@ -37,7 +37,7 @@ const BrowseStyle = () => {
           alt="hym-dress"
           width={407}
           height={289}
-          className="w-full max-w-[407px] pointer-events-none max-xl:max-w-[500px] max-xl:h-[310px]"
+          className="w-full max-w-[407px] pointer-events-none max-xl:max-w-[500px] max-xl:h-[310px] transition-all ease-linear duration-300 hover:scale-150"
         />
       </div>
     </div>

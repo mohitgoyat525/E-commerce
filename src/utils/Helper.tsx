@@ -1,13 +1,23 @@
 
 import { FacebookIcon, FourHalfStar, FourStar, GithubIcon, InstagramIcon, ThreeHalfStar, TwitterIcon } from "./Icons";
 
-export const HEADER_LIST: { name: string; link?: string }[] = [
+export const HEADER_LIST: {
+  name: string;
+  link?: string;
+  submenu?: { title: string; link: string }[];
+}[] = [
   {
     name: "Shop ",
+    link: "#shop",
+    submenu: [
+      { title: "T shirts", link: "#tshirts" },
+      { title: "pants", link: "#pants" },
+      { title: "shoes", link: "#shoes" },
+    ],
   },
   {
     name: "On Sale",
-    link: "#On-sale",
+    link: "#on-sale",
   },
   {
     name: "New Arrivals",
@@ -278,6 +288,6 @@ export const YOU_MIGHT_LIST = [
   },
 ];
 
-export const SELECT_COLOR_LIST = ["#4F4631", "#314F4A", "#31344F"];
+export const SELECT_COLOR_LIST = ["Green", "Red", "Blue"];
 
 export const SELECT_SIZE_LIST = ["Small", "Medium", "Large", "X-Large"];

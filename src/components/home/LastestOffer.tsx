@@ -105,7 +105,7 @@ const LatestOffer = () => {
         </div>
         <button
           type="submit"
-          className={`text-black bg-white w-full max-w-[349px] rounded-full border border-solid border-white py-3 px-5 `}
+          className={`text-black bg-white w-full max-w-[349px] rounded-full border border-solid border-white py-3 px-5  transition-all ease-linear duration-300 hover:bg-black hover:text-white hover:border-white`}
         >
           Subscribe to Newsletter
         </button>

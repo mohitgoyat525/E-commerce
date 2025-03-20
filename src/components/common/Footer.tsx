@@ -47,7 +47,7 @@ const Footer = () => {
                       <li key={j} className="pb-4">
                         <Link
                           href={list.link}
-                          className="leading-[19px] text-black/60 whitespace-nowrap max-md:text-sm"
+                          className="leading-[19px] text-black/60 whitespace-nowrap max-md:text-sm transition-all ease-linear duration-300 hover:text-blue-400"
                         >
                           {list.title}
                         </Link>

@@ -5,13 +5,7 @@ import Header from "../common/Header";
 import { CheckIcon, MinusIcon, NextMoveIcon, PlusIcon } from "@/utils/Icons";
 import Image from "next/image";
 import Swal from "sweetalert2";
-import {
-  TOP_SELLING_LIST,
-  NEW_ARRIVALS_LIST,
-  YOU_MIGHT_LIST,
-  SELECT_SIZE_LIST,
-  SELECT_COLOR_LIST,
-} from "@/utils/Helper";
+import {TOP_SELLING_LIST,NEW_ARRIVALS_LIST,YOU_MIGHT_LIST,SELECT_SIZE_LIST,SELECT_COLOR_LIST,} from "@/utils/Helper";
 
 // Define the Product interface
 interface Product {
@@ -40,8 +34,7 @@ const ReviewHero: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>("");
   const defaultImageTwo = "/assets/images/webp/skinny-jeans-img-one.webp";
   const defaultImageThree = "/assets/images/webp/t-shirt-img-one.webp";
-  const [heading, setHeading] = useState<string>("");
-  const [price, setPrice] = useState<number>(0);
+
   // Effect to load product based on slug
   useEffect(() => {
     if (productSlug) {
@@ -100,10 +93,8 @@ const ReviewHero: React.FC = () => {
 
   return (
     <>
-      <div className="max-xl:px-4">
         <Header />
         <div className="w-full max-w-[1240px] mx-auto border border-solid border-[#0000001A]"></div>
-      </div>
       <div className="px-4">
         <div className="w-full max-w-[1240px] bg-[#0000001A] mx-auto my-6"></div>
         <div className="flex items-center gap-2.5 max-w-[1240px] w-full mx-auto">
