@@ -11,7 +11,6 @@ import {
   PromoCodeIcon,
 } from "@/utils/Icons";
 
-// Define the interface for cart item
 interface CartItem {
   selectedImg: string;
   heading: string;
@@ -34,7 +33,6 @@ const HeroCart = () => {
           const parsedItems = JSON.parse(storedItems);
 
           if (Array.isArray(parsedItems)) {
-            // Ensure each item has a quantity, default to 1 if not present
             const itemsWithQuantity = parsedItems.map((item: any) => ({
               ...item,
               quantity: item.quantity || 1,

@@ -13,13 +13,12 @@ import {
   SELECT_COLOR_LIST,
 } from "@/utils/Helper";
 
-// Define the Product interface with discount
 interface Product {
   tittle: string;
   image: string;
   rating: string;
   price: string;
-  discount?: number; // Optional discount property (percentage)
+  discount?: number; 
   additionalImages?: string[];
   cancelPrice?: string;
 }
@@ -33,7 +32,7 @@ const ReviewHero: React.FC = () => {
   const pathname = usePathname();
   const productSlug = pathname.split("/").pop();
   const [product, setProduct] = useState<Product | null>(null);
-  const [selectedColor, setSelectedColor] = useState<string>("#4F4631");
+  const [selectedColor, setSelectedColor] = useState<string>("bg-brown");
   const [selectedSize, setSelectedSize] = useState<string>("Medium");
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedImage, setSelectedImage] = useState<string>("");
@@ -55,7 +54,7 @@ const ReviewHero: React.FC = () => {
     }
   }, [productSlug]);
 
-  if (!product) return <p>Loading...</p>;
+  if (!product) return <p className="text-center font-bold text-2xl py-5">Loading...</p>;
 
   const handleAddToCart = () => {
     const cartItem = {

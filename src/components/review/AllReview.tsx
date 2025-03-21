@@ -44,7 +44,7 @@ const AllReviews = () => {
         <ReviewsData />
       ) : (
         <div className="mt-4">
-          <h2 className="text-lg text-center font-bold">Coming soon</h2>
+          <h2 className="text-xl text-center font-bold">Coming soon</h2>
         </div>
       )}
     </div>

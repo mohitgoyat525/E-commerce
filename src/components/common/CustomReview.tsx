@@ -81,7 +81,7 @@ const ReviewsData = () => {
           ))}
         </div>
         <div className="flex justify-center items-center w-full py-9">
-          <button className="py-[15px] px-[45px] border-black/10 hover:bg-black hover:text-white border border-solid rounded-full transition-all ease-linear duration-300">
+          <button className="py-[15px] px-[45px] font-medium text-base leading-[100%] border-black/10 hover:bg-black hover:text-white border border-solid rounded-full transition-all ease-linear duration-300">
             Load More Reviews
           </button>
         </div>
