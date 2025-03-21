@@ -29,6 +29,7 @@ const AllReviews = () => {
             >
               <Link
                 href={`?tab=${itemSlug}`}
+                scroll={false}
                 className={`text-center text-xl text-black/60 max-sm:px-3 max-sm:text-base max-md:text-lg whitespace-nowrap leading-[100%] ${
                   isActive && "font-medium !text-black"
                 }`}

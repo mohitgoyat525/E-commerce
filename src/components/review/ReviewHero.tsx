@@ -90,6 +90,13 @@ const ReviewHero: React.FC = () => {
       localStorage.setItem("cartItems", JSON.stringify(updatedItems));
       window.dispatchEvent(new Event("storage"));
     }
+    Swal.fire({
+      title: "Success!",
+      text: "Go Check Your Cart",
+      icon: "success",
+      confirmButtonColor: "#000000",
+    });
+
   };
 
   return (
