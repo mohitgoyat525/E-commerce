@@ -2,14 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../common/Header";
 import Image from "next/image";
-import {
-  BtnNextIcon,
-  DeleteIcon,
-  MinusIcon,
-  NextMoveIcon,
-  PlusIcon,
-  PromoCodeIcon,
-} from "@/utils/Icons";
+import { BtnNextIcon, DeleteIcon, MinusIcon, NextMoveIcon, PlusIcon, PromoCodeIcon,} from "@/utils/Icons";
 
 interface CartItem {
   selectedImg: string;
@@ -127,7 +120,9 @@ const HeroCart = () => {
                           >
                             <MinusIcon />
                           </button>
-                          <p className="text-sm font-normal leading-[100%]">{item.quantity}</p>
+                          <p className="text-sm font-normal leading-[100%]">
+                            {item.quantity}
+                          </p>
                           <button
                             className="px-3"
                             onClick={() =>
@@ -183,7 +178,7 @@ const HeroCart = () => {
                       className="w-full bg-transparent outline-none text-base font-normal"
                     />
                   </div>
-                  <button className="bg-black max-sm:min-w-[88px] max-sm:h-[48px] transition-all ease-linear duration-300 hover:bg-gray-700 rounded-full text-white h-[48px] text-base font-normal leading-[100%] flex items-center justify-center border border-solid border-transparent min-w-[119px]">
+                  <button className="bg-black cursor-pointer max-sm:min-w-[88px] max-sm:h-[48px] transition-all ease-linear duration-300 hover:bg-gray-700 rounded-full text-white h-[48px] text-base font-normal leading-[100%] flex items-center justify-center border border-solid border-transparent min-w-[119px]">
                     Apply
                   </button>
                 </div>

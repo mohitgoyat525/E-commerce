@@ -223,16 +223,18 @@ const ReviewHero: React.FC = () => {
             <div className="flex items-center gap-4">
               <div className="flex items-center justify-between w-full max-w-[170px] rounded-full bg-[#F0F0F0] p-2 h-[52px]">
                 <button
-                  className="px-3"
+                  className="px-3 cursor-pointer"
                   onClick={() =>
                     setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
                   }
                 >
                   <MinusIcon />
                 </button>
-                <p className="font-medium text-base leading-[100%] max-sm:text-sm">{quantity}</p>
+                <p className="font-medium text-base leading-[100%] max-sm:text-sm">
+                  {quantity}
+                </p>
                 <button
-                  className="px-3"
+                  className="px-3 cursor-pointer"
                   onClick={() => setQuantity((prev) => prev + 1)}
                 >
                   <PlusIcon />
@@ -240,7 +242,7 @@ const ReviewHero: React.FC = () => {
               </div>
               <button
                 onClick={handleAddToCart}
-                className="w-full bg-black text-white py-3 rounded-full h-[52px] font-medium text-base leading-[100%]"
+                className="w-full bg-black text-white py-3 cursor-pointer rounded-full h-[52px] font-medium text-base leading-[100%]"
               >
                 Add to Cart
               </button>

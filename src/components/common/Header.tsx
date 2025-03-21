@@ -110,7 +110,7 @@ const Header = () => {
                       <div className="flex items-center gap-3">
                         <button
                           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className="font-normal text-base leading-[100%] max-lg:text-2xl transition-all ease-linear duration-300 hover:text-blue-500"
+                          className="font-normal text-base cursor-pointer leading-[100%] max-lg:text-2xl transition-all ease-linear duration-300 hover:text-blue-500"
                         >
                           {obj.name}
                         </button>

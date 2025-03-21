@@ -46,7 +46,7 @@ const ReviewsData = () => {
               <div className="sm:hidden">
                 <FilterIcon />
               </div>
-              <button className="text-white bg-black font-medium text-xs leading-[100%] h-10 min-w-[113px] flex items-center justify-center transition-all ease-linear duration-300 hover:bg-white hover:text-black hover:border-black border border-solid sm:hidden rounded-full">
+              <button className="text-white cursor-pointer bg-black font-medium text-xs leading-[100%] h-10 min-w-[113px] flex items-center justify-center transition-all ease-linear duration-300 hover:bg-white hover:text-black hover:border-black border border-solid sm:hidden rounded-full">
                 Write a Review
               </button>
             </div>

@@ -16,7 +16,7 @@ const Hero = () => {
               designed to bring out your individuality and cater to your sense
               of style.
             </p>
-            <button className="bg-black text-white flex items-center justify-center mt-5 w-[210px] min-w-[210px] max-sm:min-w-full max-sm:w-full h-[52px] rounded-full border border-solid border-black transition-all ease-linear duration-300 hover:bg-white hover:text-black">
+            <button className="bg-black text-white cursor-pointer flex items-center justify-center mt-5 w-[210px] min-w-[210px] max-sm:min-w-full max-sm:w-full h-[52px] rounded-full border border-solid border-black transition-all ease-linear duration-300 hover:bg-white hover:text-black">
               Shop Now
             </button>
             <div className="flex items-center gap-7 mt-12 max-sm:mt-5 flex-wrap max-md:justify-center max-md:gap-7">

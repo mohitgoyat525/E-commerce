@@ -35,7 +35,7 @@ const CustomProduct: React.FC<ProductSliderProps> = ({
           spaceBetween={20}
           slidesPerView={4}
           breakpoints={{
-            0: { slidesPerView: 1.5 , spaceBetween:10} ,
+            0: { slidesPerView: 1.5, spaceBetween: 10 },
             480: { slidesPerView: 2 },
             768: { slidesPerView: 3 },
             1024: { slidesPerView: 4 },
@@ -90,7 +90,7 @@ const CustomProduct: React.FC<ProductSliderProps> = ({
           ))}
         </Swiper>
       </div>
-      <button className="font-medium text-base leading-[100%] border border-solid border-[#0000001A] flex items-center justify-center min-w-[218px] h-[52px] mx-auto mt-[36px] max-sm:mt-6 transition-all ease-linear duration-300 max-sm:min-w-full hover:bg-black hover:text-white rounded-full">
+      <button className="font-medium cursor-pointer text-base leading-[100%] border border-solid border-[#0000001A] flex items-center justify-center min-w-[218px] h-[52px] mx-auto mt-[36px] max-sm:mt-6 transition-all ease-linear duration-300 max-sm:min-w-full hover:bg-black hover:text-white rounded-full">
         View All
       </button>
     </div>
