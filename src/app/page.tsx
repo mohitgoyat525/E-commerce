@@ -5,8 +5,6 @@ import Hero from "@/components/home/Hero";
 import NewArrivals from "@/components/home/NewArrivals";
 import TopSelling from "@/components/home/TopSelling";
 import Footer from "@/components/common/Footer";
-
-import Image from "next/image";
 import { Suspense } from "react";
 
 export default function Home() {
