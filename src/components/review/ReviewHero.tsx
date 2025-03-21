@@ -230,7 +230,7 @@ const ReviewHero: React.FC = () => {
                 >
                   <MinusIcon />
                 </button>
-                <p>{quantity}</p>
+                <p className="font-medium text-base leading-[100%] max-sm:text-sm">{quantity}</p>
                 <button
                   className="px-3"
                   onClick={() => setQuantity((prev) => prev + 1)}
