@@ -49,7 +49,7 @@ const ReviewHero: React.FC = () => {
       setProduct(foundProduct ?? null);
       if (foundProduct) {
         setSelectedImage(foundProduct.image);
-        setShowDiscount(!!foundProduct.discount && foundProduct.discount > 0);
+        setShowDiscount(!!foundProduct.discount);
       }
     }
   }, [productSlug]);
