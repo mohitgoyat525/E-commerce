@@ -21,6 +21,7 @@ interface ProductSliderProps {
   showDiscount?: (index: number) => boolean;
 }
 
+
 const CustomProduct: React.FC<ProductSliderProps> = ({
   tittle,
   productList,

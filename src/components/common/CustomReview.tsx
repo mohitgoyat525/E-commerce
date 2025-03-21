@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { REVIEWS_LIST } from "@/utils/Helper";
-import { FilterIcon, ThreeDots } from "@/utils/Icons";
+import { DownArrow, FilterIcon, ThreeDots } from "@/utils/Icons";
 import Image from "next/image";
 const ReviewsData = () => {
   const [sortOption, setSortOption] = useState("Oldest");
@@ -31,14 +31,17 @@ const ReviewsData = () => {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <select
-              className="cursor-pointer outline-none rounded-[62px] font-medium py-[13px] px-5 bg-light-blue max-sm:hidden"
-              value={sortOption}
-              onChange={handleSortChange}
-            >
-              <option>Oldest</option>
-              <option>Latest</option>
-            </select>
+            <div className="flex items-center gap-3 py-[13px] rounded-full border border-solid border-[#F0F0F0] px-5 bg-[#F0F0F0] min-w-[120px]">
+              <select
+                className="cursor-pointer appearance-none outline-none rounded-[62px] font-medium max-sm:hidden"
+                value={sortOption}
+                onChange={handleSortChange}
+              >
+                <option>Oldest</option>
+                <option>Latest</option>
+              </select>
+              <DownArrow />
+            </div>
             <div className="flex items-center gap-3">
               <div className="sm:hidden">
                 <FilterIcon />
