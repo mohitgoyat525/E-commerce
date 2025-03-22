@@ -6,10 +6,12 @@ import NewArrivals from "@/components/home/NewArrivals";
 import TopSelling from "@/components/home/TopSelling";
 import Footer from "@/components/common/Footer";
 import { Suspense } from "react";
+import PreLoader from "@/components/home/PreLoader";
 
 export default function Home() {
   return (
     <Suspense>
+      <PreLoader/>
       <Hero />
       <Brands />
       <NewArrivals />
