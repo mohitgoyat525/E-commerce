@@ -2,14 +2,21 @@
 import React, { useState, useEffect } from "react";
 import Header from "../common/Header";
 import Image from "next/image";
-import { BtnNextIcon, DeleteIcon, MinusIcon, NextMoveIcon, PlusIcon, PromoCodeIcon,} from "@/utils/Icons";
+import {
+  BtnNextIcon,
+  DeleteIcon,
+  MinusIcon,
+  NextMoveIcon,
+  PlusIcon,
+  PromoCodeIcon,
+} from "@/utils/Icons";
 
 interface CartItem {
   selectedImg: string;
   heading: string;
   selectedSize: string;
   selectedColor: string;
-  price: string;
+  price: string; // Keeping as string as per your original code
   quantity: number;
 }
 
@@ -53,6 +60,21 @@ const HeroCart = () => {
     setCartItems(updatedCart);
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
   };
+
+  // Calculate totals
+  const calculateSubtotal = (): number => {
+    return cartItems.reduce((total, item) => {
+      const price = parseFloat(item.price.replace("$", "")) || 0;
+      return total + price * item.quantity;
+    }, 0);
+  };
+
+  const discountPercentage = 0.2;
+  const deliveryFee = 15; 
+
+  const subtotal = calculateSubtotal();
+  const discount = subtotal * discountPercentage;
+  const total = subtotal - discount + deliveryFee;
 
   if (isLoading)
     return <p className="text-center py-4 text-2xl font-bold">Loading...</p>;
@@ -109,7 +131,11 @@ const HeroCart = () => {
                       </p>
                       <div className="flex items-center justify-between mt-4">
                         <p className="font-bold text-2xl leading-[100%] max-sm:text-xl">
-                          {item.price}
+                          $
+                          {(
+                            parseFloat(item.price.replace("$", "")) *
+                            item.quantity
+                          ).toFixed(2)}
                         </p>
                         <div className="flex items-center justify-between w-full max-w-[126px] max-sm:max-w-[105px] max-sm:h-[31px] rounded-full bg-[#F0F0F0] p-2 h-[52px]">
                           <button
@@ -148,26 +174,32 @@ const HeroCart = () => {
                   <p className="text-[#00000099] font-normal text-xl leading-[100%] max-sm:text-base">
                     Subtotal
                   </p>
-                  <p className="font-bold text-xl leading-[100%]">$565</p>
+                  <p className="font-bold text-xl leading-[100%]">
+                    ${subtotal.toFixed(2)}
+                  </p>
                 </div>
                 <div className="flex items-center justify-between my-5">
                   <p className="text-[#00000099] font-normal text-xl leading-[100%] max-sm:text-base">
                     Discount (-20%)
                   </p>
                   <p className="font-bold text-xl leading-[100%] text-[#FF3333]">
-                    -$113
+                    -${discount.toFixed(2)}
                   </p>
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-[#00000099] font-normal text-xl leading-[100%] max-sm:text-base">
                     Delivery Fee
                   </p>
-                  <p className="font-bold text-xl leading-[100%]">$15</p>
+                  <p className="font-bold text-xl leading-[100%]">
+                    ${deliveryFee.toFixed(2)}
+                  </p>
                 </div>
                 <div className="w-full border border-solid border-[#00000011] my-5"></div>
                 <div className="flex items-center justify-between">
                   <p className="font-normal text-base leading-[100%]">Total</p>
-                  <p className="font-bold text-2xl leading-[100%]">$467</p>
+                  <p className="font-bold text-2xl leading-[100%]">
+                    ${total.toFixed(2)}
+                  </p>
                 </div>
                 <div className="flex items-center justify-between gap-3 my-6">
                   <div className="w-full max-w-[326px] rounded-full h-[48px] bg-[#F0F0F0] flex items-center gap-3 px-3">
@@ -182,7 +214,7 @@ const HeroCart = () => {
                     Apply
                   </button>
                 </div>
-                <button className="bg-black rounded-full mb-[33px] text-white font-normal gap-3 transition-all ease-linear duration-300 hover:bg-gray-700 text-base h-[48px] w-full flex items-center justify-center">
+                <button className="bg-black cursor-pointer rounded-full mb-[33px] text-white font-normal gap-3 transition-all ease-linear duration-300 hover:bg-gray-700 text-base h-[48px] w-full flex items-center justify-center">
                   Go to Checkout
                   <span>
                     <BtnNextIcon />

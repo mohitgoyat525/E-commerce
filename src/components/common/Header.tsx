@@ -49,7 +49,7 @@ const Header = () => {
           <div className="flex items-center justify-center max-w-[1240px] mx-auto relative">
             <p className="text-white text-sm font-normal leading-[100%] text-center py-2.5">
               Sign up and get 20% off to your first order.
-              <span className="border-b font-normal border-solid border-white cursor-pointer">
+              <span className="border-b ps-1 font-normal border-solid border-white cursor-pointer">
                 Sign Up Now
               </span>
             </p>
